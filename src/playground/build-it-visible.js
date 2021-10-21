@@ -1,5 +1,3 @@
-"use strict";
-
 // ============================================
 // My version
 
@@ -28,37 +26,27 @@
 // ============================================
 // Anrew's version
 
-var visability = false;
+let visability = false;
 
-var toggleVisability = function toggleVisability() {
-  visability = !visability;
+const toggleVisability = () => {
+  visability = !visability
   render();
-};
+}
 
-var render = function render() {
-  var jsx = React.createElement(
-    "div",
-    null,
-    React.createElement(
-      "h1",
-      null,
-      "Visibility Toggle"
-    ),
-    React.createElement(
-      "button",
-      { onClick: toggleVisability },
-      visability ? "Hide details" : "Show details"
-    ),
-    visability && React.createElement(
-      "div",
-      null,
-      React.createElement(
-        "p",
-        null,
-        "Hey. These are some details you can now see!"
-      )
-    )
+const render = () => {
+  const jsx = (
+    <div>
+      <h1>Visibility Toggle</h1>
+      <button onClick={toggleVisability}>
+        {visability ? "Hide details" : "Show details"}
+      </button>
+      {visability && (
+        <div>
+          <p>Hey. These are some details you can now see!</p>
+        </div>
+      )}
+    </div>
   );
-  ReactDOM.render(jsx, document.getElementById('app'));
+  ReactDOM.render(jsx, document.getElementById('app'))
 };
 render();
